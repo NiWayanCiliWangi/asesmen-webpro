@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Arrow Filter</title>
+  <style>.sub{
+    background-color: rgb(219, 219, 219);
+    padding:3px;
+  }</style>
+</head>
+<body>
+
+  <input type="text" name="buah" id="buah" placeholder="Filter List....">
+
+  <div id="list">
+
+  </div>
+
+  <script src="./main.js">
+    const fruits = ["Apple","Banana","Cherry","Date","Elderberry"]
+const list = document.getElementById("list")
+
+const filter = {
+  searchText:''
+}
+const renderFruits =(fruits,filter)=>{
+  const filtered = fruits.filter((fruit)=>{
+    return fruit.toLowerCase().includes(filter.searchText.toLowerCase())
+  })
+
+  list.innerHTML= ''
+  filtered.forEach((item)=>{
+    const tagP = document.createElement("p")
+    tagP.className="sub"
+    const value = document.createTextNode(item)
+    tagP.appendChild(value)
+    list.appendChild(tagP)
+  })
+}
+
+renderFruits(fruits,filter)
+
+document.querySelector("#buah").addEventListener("input",function(e){
+ filter.searchText = e.target.value
+ renderFruits(fruits,filter)
+})
+  </script>
+  <script>
+    const fruits = ["Apple","Banana","Cherry","Date","Elderberry"]
+const list = document.getElementById("list")
+
+const filter = {
+  searchText:''
+}
+const renderFruits =(fruits,filter)=>{
+  const filtered = fruits.filter((fruit)=>{
+    return fruit.toLowerCase().includes(filter.searchText.toLowerCase())
+  })
+
+  list.innerHTML= ''
+  filtered.forEach((item)=>{
+    const tagP = document.createElement("p")
+    tagP.className="sub"
+    const value = document.createTextNode(item)
+    tagP.appendChild(value)
+    list.appendChild(tagP)
+  })
+}
+
+renderFruits(fruits,filter)
+
+document.querySelector("#buah").addEventListener("input",function(e){
+ filter.searchText = e.target.value
+ renderFruits(fruits,filter)
+})
+  </script>
+</body>
+</html>
